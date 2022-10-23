@@ -1,5 +1,32 @@
 # runitor
 
+## Fork notes
+
+This is a fork of runitor used for hosting a debian repository build with official runitor releases.
+The repo is available at https://debian.germancoding.com
+
+To add this repository, run:
+
+```
+# Add the release PGP key:
+sudo curl -o /usr/share/keyrings/germancoding-archive-keyring.gpg https://germancoding.com/.debian/debian@germancoding.com.gpg
+# Add the "stable" channel (for stable runitor releases) to your APT sources:
+echo "deb [signed-by=/usr/share/keyrings/germancoding-archive-keyring.gpg] https://debian.germancoding.com/ runitor stable" | sudo tee /etc/apt/sources.list.d/runitor.list
+```
+
+Optional: You can also limit the fetched architectures on a multiarch system to i.e. amd64: (Note the arch= line)
+```
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/germancoding-archive-keyring.gpg] https://debian.germancoding.com/ runitor stable" | sudo tee /etc/apt/sources.list.d/runitor.list
+```
+
+Then, install from new sources:
+
+```
+sudo apt-get update
+sudo apt-get install runitor
+```
+
+
 Runitor runs the supplied command, captures its output, and based on its exit
 code reports successful or failed execution to https://healthchecks.io or your
 private instance.
