@@ -2,7 +2,7 @@
 set -e
 program="runitor"
 version="1.0.0"
-revision=1
+revision=3
 debversion="${version}-${revision}"
 github="https://github.com/bdd/runitor/releases/download/"
 prefix="/usr/bin"
@@ -13,7 +13,11 @@ supported_archs=("amd64"  "arm"  "arm64")
 
 for arch in ${supported_archs[*]}; do
      package="${program}_${debversion}_${arch}"
-     wget -P ${package}${prefix}/${program} ${github}${pversion}/${program}-${pversion}-${platform}-${arch}
+     directory=${package}${prefix}
+     binary=${directory}/${program}
+     mkdir -p ${directory}
+     wget -O "${binary}" "${github}${pversion}/${program}-${pversion}-${platform}-${arch}"
+     chmod +x ${binary}
      cp -ar DEBIAN ${package}
      sed -i -e "s/Version: TEMPLATE$/Version: $debversion/g" ${package}/${control}
      sed -i -e "s/Architecture: TEMPLATE$/Architecture: $arch/g" ${package}/${control}
