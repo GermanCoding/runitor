@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 program="runitor"
-version="1.0.0"
-revision=4
+version="1.1.0"
+revision=1
 debversion="${version}-${revision}"
 github="https://github.com/bdd/runitor/releases/download/"
 prefix="/usr/bin"
