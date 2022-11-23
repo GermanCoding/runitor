@@ -14,6 +14,11 @@ sudo curl -o /usr/share/keyrings/germancoding-archive-keyring.gpg https://german
 echo "deb [signed-by=/usr/share/keyrings/germancoding-archive-keyring.gpg] https://debian.germancoding.com/ runitor stable" | sudo tee /etc/apt/sources.list.d/runitor.list
 ```
 
+Optional: The `beta` component contains beta/rc releases of runitor. If you want to use those, use this line instead
+```
+echo "deb [signed-by=/usr/share/keyrings/germancoding-archive-keyring.gpg] https://debian.germancoding.com/ runitor beta" | sudo tee /etc/apt/sources.list.d/runitor.list
+```
+
 Optional: You can also limit the fetched architectures on a multiarch system to i.e. amd64: (Note the arch= line)
 ```
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/germancoding-archive-keyring.gpg] https://debian.germancoding.com/ runitor stable" | sudo tee /etc/apt/sources.list.d/runitor.list
