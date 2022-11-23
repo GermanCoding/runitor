@@ -1,12 +1,12 @@
 #!/bin/bash
 set -e
 program="runitor"
-version="1.1.0"
+version="1.1.1~rc.1"
 revision=1
 debversion="${version}-${revision}"
 github="https://github.com/bdd/runitor/releases/download/"
 prefix="/usr/bin"
-pversion="v$version"
+pversion="v${version//\~/-}"
 platform="linux"
 control="DEBIAN/control"
 declare -A supported_archs
