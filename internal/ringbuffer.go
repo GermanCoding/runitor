@@ -1,5 +1,5 @@
 // Copyright 2020 - 2022, Berk D. Demir and the runitor contributors
-// SPDX-License-Identifier: OBSD
+// SPDX-License-Identifier: 0BSD
 package internal
 
 import (
@@ -116,16 +116,6 @@ func (r *RingBuffer) read(p []byte) (n int) {
 	}
 
 	return
-}
-
-// Snapshot returns a clone of r.buf
-//
-// Currently only intended for testing.
-func (r *RingBuffer) Snapshot() []byte {
-	c := make([]byte, r.Len())
-	copy(c, r.buf)
-
-	return c
 }
 
 // NewRingBuffer allocates a new RingBuffer and the backing byte array with
