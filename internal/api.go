@@ -1,4 +1,4 @@
-// Copyright 2020 - 2022, Berk D. Demir and the runitor contributors
+// Copyright (c) Berk D. Demir and the runitor contributors.
 // SPDX-License-Identifier: 0BSD
 //
 // Package internal contains healthchecks.io HTTP API client implementation for
@@ -197,6 +197,8 @@ Try:
 
 	switch {
 	case resp.StatusCode == http.StatusOK:
+		return
+	case resp.StatusCode == http.StatusCreated:
 		return
 	case retriableResponse(resp.StatusCode):
 		code := resp.StatusCode

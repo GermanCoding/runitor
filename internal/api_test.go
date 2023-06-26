@@ -1,4 +1,4 @@
-// Copyright 2020 - 2022, Berk D. Demir and the runitor contributors
+// Copyright (c) Berk D. Demir and the runitor contributors.
 // SPDX-License-Identifier: 0BSD
 package internal_test
 
@@ -54,6 +54,27 @@ func TestPostRequest(t *testing.T) {
 		BaseURL:   ts.URL,
 		Client:    ts.Client(),
 		UserAgent: expUA,
+	}
+
+	_, err := c.PingSuccess(TestHandle, TestRunId, nil)
+	if err != nil {
+		t.Fatalf("expected successful Ping, got error: %+v", err)
+	}
+}
+
+// Tests if APIClient treats HTTP 201 as a successful response.
+func TestPost201Response(t *testing.T) {
+	t.Parallel()
+
+	ts := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusCreated)
+	}))
+
+	defer ts.Close()
+
+	c := &APIClient{
+		BaseURL:   ts.URL,
+		Client:    ts.Client(),
 	}
 
 	_, err := c.PingSuccess(TestHandle, TestRunId, nil)

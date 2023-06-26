@@ -1,6 +1,6 @@
-// Copyright 2020 - 2022, Berk D. Demir and the runitor contributors
+// Copyright (c) Berk D. Demir and the runitor contributors.
 // SPDX-License-Identifier: 0BSD
-package main // import "bdd.fi/x/runitor/cmd/runitor"
+package main
 
 import (
 	"bytes"
@@ -189,7 +189,7 @@ func main() {
 			Transport: NewDefaultTransportWithResumption(),
 			Timeout:   *apiTimeout,
 		},
-		UserAgent:  fmt.Sprintf("%s/%s (+%s)", Name, releaseVersion(), Homepage),
+		UserAgent:  fmt.Sprintf("%s/%s (%s-%s; +%s)", Name, releaseVersion(), runtime.GOOS, runtime.GOARCH, Homepage),
 		ReqHeaders: reqHeaders,
 	}
 

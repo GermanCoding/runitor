@@ -1,3 +1,5 @@
+# Copyright (c) Berk D. Demir and the runitor contributors.
+# SPDX-License-Identifier: 0BSD
 {
   description = "runitor";
 
@@ -35,6 +37,7 @@
           version = "${revDate}-${self.shortRev or "dirty"}";
           vendorSha256 = null;
           src = ./.;
+          CGO_ENABLED = 0;
           ldflags = [ "-s" "-w" "-X main.Version=v${version}" ];
           meta = with lib; {
             homepage = "https://bdd.fi/x/runitor";
